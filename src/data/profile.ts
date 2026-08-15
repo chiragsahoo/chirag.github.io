@@ -15,7 +15,7 @@ export const profile = {
     'I focus on microservices architecture, API design, performance optimization, code quality through reviews, and reliable production support across distributed systems.',
   ],
   footerQuote: 'Code. Architect. Lead. Deliver.',
-  resumePath: '/assets/Chirag-Sahoo-Resume.pdf',
+  resumePath: `${import.meta.env.BASE_URL}assets/Chirag-Sahoo-Resume.pdf`,
   contact: {
     email: '' as string, // e.g. "chirag@example.com"
     phone: '' as string, // e.g. "+91 XXXXX XXXXX"
