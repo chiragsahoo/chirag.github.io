@@ -5,6 +5,7 @@ import './ResumeCTA.css';
 
 export function ResumeCTA() {
   const linkedinConfigured = Boolean(profile.contact.linkedin);
+  const canDownloadResume = profile.resumeDownloadEnabled;
 
   return (
     <section id="resume" className="section resume-cta" aria-labelledby="resume-title">
@@ -21,10 +22,12 @@ export function ResumeCTA() {
                 come together.
               </p>
               <div className="resume-cta__actions">
-                <a href={profile.resumePath} className="btn btn-primary" download>
-                  <Download className="btn-icon" aria-hidden="true" />
-                  Download Resume
-                </a>
+                {canDownloadResume ? (
+                  <a href={profile.resumePath} className="btn btn-primary" download>
+                    <Download className="btn-icon" aria-hidden="true" />
+                    Download Resume
+                  </a>
+                ) : null}
                 {linkedinConfigured ? (
                   <a
                     href={profile.contact.linkedin}
@@ -44,9 +47,9 @@ export function ResumeCTA() {
                   </span>
                 )}
               </div>
-              <p className="resume-cta__hint">
-                PDF available for download
-              </p>
+              {canDownloadResume ? (
+                <p className="resume-cta__hint">PDF available for download</p>
+              ) : null}
             </div>
           </div>
         </Reveal>

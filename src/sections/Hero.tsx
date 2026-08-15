@@ -46,10 +46,12 @@ export function Hero() {
             <FolderKanban className="btn-icon" aria-hidden="true" />
             View Projects
           </a>
-          <a href={profile.resumePath} className="btn btn-ghost" download>
-            <Download className="btn-icon" aria-hidden="true" />
-            Download Resume
-          </a>
+          {profile.resumeDownloadEnabled ? (
+            <a href={profile.resumePath} className="btn btn-ghost" download>
+              <Download className="btn-icon" aria-hidden="true" />
+              Download Resume
+            </a>
+          ) : null}
           {linkedinConfigured ? (
             <a
               href={profile.contact.linkedin}

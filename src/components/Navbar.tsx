@@ -78,13 +78,15 @@ export function Navbar() {
             </a>
           )}
           */}
-          <a
-            href={profile.resumePath}
-            className="btn btn-secondary navbar__cta"
-            download
-          >
-            Resume
-          </a>
+          {profile.resumeDownloadEnabled ? (
+            <a
+              href={profile.resumePath}
+              className="btn btn-secondary navbar__cta"
+              download
+            >
+              Resume
+            </a>
+          ) : null}
           <button
             type="button"
             className="navbar__toggle"
@@ -114,14 +116,16 @@ export function Navbar() {
               {link.label}
             </a>
           ))}
-          <a
-            href={profile.resumePath}
-            className="btn btn-primary"
-            download
-            onClick={close}
-          >
-            Download Resume
-          </a>
+          {profile.resumeDownloadEnabled ? (
+            <a
+              href={profile.resumePath}
+              className="btn btn-primary"
+              download
+              onClick={close}
+            >
+              Download Resume
+            </a>
+          ) : null}
         </nav>
       </div>
     </header>

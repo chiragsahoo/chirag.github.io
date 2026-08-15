@@ -16,6 +16,8 @@ export const profile = {
   ],
   footerQuote: 'CODE. ARCHITECT. LEAD. DELIVER.',
   resumePath: `${import.meta.env.BASE_URL}assets/Chirag-Sahoo-Resume.pdf`,
+  /** Set to true to enable Download Resume buttons across the site. */
+  resumeDownloadEnabled: false,
   contact: {
     email: 'chiragsahoo086@gmail.com',
     phone: '7000545328',
