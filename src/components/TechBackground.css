@@ -1,0 +1,130 @@
+.tech-bg {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.tech-bg__grid {
+  position: absolute;
+  inset: -20%;
+  background-image:
+    linear-gradient(rgba(0, 212, 255, 0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 212, 255, 0.045) 1px, transparent 1px);
+  background-size: 64px 64px;
+  transform: perspective(600px) rotateX(58deg) translateY(-12%);
+  transform-origin: center top;
+  mask-image: radial-gradient(ellipse 70% 55% at 50% 20%, black 20%, transparent 75%);
+  animation: grid-drift 28s linear infinite;
+}
+
+.tech-bg__glow {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+}
+
+.tech-bg__glow--1 {
+  width: min(55vw, 520px);
+  height: min(55vw, 520px);
+  top: -10%;
+  left: 10%;
+  background: rgba(30, 111, 255, 0.22);
+  animation: glow-pulse 8s ease-in-out infinite;
+}
+
+.tech-bg__glow--2 {
+  width: min(45vw, 420px);
+  height: min(45vw, 420px);
+  top: 20%;
+  right: -5%;
+  background: rgba(0, 212, 255, 0.14);
+  animation: glow-pulse 10s ease-in-out infinite reverse;
+}
+
+.tech-bg__glow--3 {
+  width: min(40vw, 360px);
+  height: min(40vw, 360px);
+  bottom: 5%;
+  left: 35%;
+  background: rgba(14, 40, 90, 0.5);
+}
+
+.tech-bg__particles {
+  position: absolute;
+  inset: 0;
+}
+
+.tech-bg__dot {
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: var(--cyan);
+  opacity: 0.35;
+  box-shadow: 0 0 8px var(--cyan-glow);
+  animation: float-dot 12s ease-in-out infinite;
+}
+
+.tech-bg__dot--1 { top: 18%; left: 12%; animation-delay: 0s; }
+.tech-bg__dot--2 { top: 28%; left: 78%; animation-delay: 1.2s; }
+.tech-bg__dot--3 { top: 42%; left: 22%; animation-delay: 2.1s; }
+.tech-bg__dot--4 { top: 55%; left: 88%; animation-delay: 0.6s; }
+.tech-bg__dot--5 { top: 68%; left: 35%; animation-delay: 3s; }
+.tech-bg__dot--6 { top: 22%; left: 55%; animation-delay: 1.8s; }
+.tech-bg__dot--7 { top: 75%; left: 65%; animation-delay: 2.5s; }
+.tech-bg__dot--8 { top: 35%; left: 8%; animation-delay: 4s; }
+.tech-bg__dot--9 { top: 48%; left: 48%; animation-delay: 0.9s; width: 2px; height: 2px; }
+.tech-bg__dot--10 { top: 12%; left: 40%; animation-delay: 3.4s; }
+.tech-bg__dot--11 { top: 82%; left: 18%; animation-delay: 1.5s; }
+.tech-bg__dot--12 { top: 60%; left: 72%; animation-delay: 2.8s; }
+.tech-bg__dot--13 { top: 30%; left: 92%; animation-delay: 4.2s; }
+.tech-bg__dot--14 { top: 70%; left: 5%; animation-delay: 0.3s; }
+.tech-bg__dot--15 { top: 8%; left: 70%; animation-delay: 5s; }
+.tech-bg__dot--16 { top: 90%; left: 50%; animation-delay: 2.2s; }
+.tech-bg__dot--17 { top: 45%; left: 30%; animation-delay: 3.8s; width: 2px; height: 2px; }
+.tech-bg__dot--18 { top: 15%; left: 25%; animation-delay: 1s; }
+
+.tech-bg__scan {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    rgba(0, 212, 255, 0.03) 50%,
+    transparent 100%
+  );
+  background-size: 100% 200%;
+  animation: scan 10s linear infinite;
+  opacity: 0.5;
+}
+
+@keyframes grid-drift {
+  from { background-position: 0 0; }
+  to { background-position: 0 64px; }
+}
+
+@keyframes glow-pulse {
+  0%, 100% { opacity: 0.7; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.08); }
+}
+
+@keyframes float-dot {
+  0%, 100% { transform: translateY(0); opacity: 0.25; }
+  50% { transform: translateY(-14px); opacity: 0.55; }
+}
+
+@keyframes scan {
+  from { background-position: 0 -100%; }
+  to { background-position: 0 100%; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tech-bg__grid,
+  .tech-bg__glow,
+  .tech-bg__dot,
+  .tech-bg__scan {
+    animation: none !important;
+  }
+}

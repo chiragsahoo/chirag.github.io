@@ -1,0 +1,129 @@
+.architecture {
+  background: linear-gradient(180deg, transparent, rgba(8, 20, 48, 0.5), transparent);
+}
+
+.arch-flow {
+  padding: 1.5rem 1rem;
+  margin-bottom: 2.5rem;
+  overflow-x: auto;
+}
+
+.arch-flow__list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+}
+
+.arch-flow__node {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 420px;
+}
+
+.arch-flow__box {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.9rem 1.15rem;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border);
+  background: linear-gradient(135deg, rgba(0, 212, 255, 0.06), rgba(30, 111, 255, 0.04));
+  transition: border-color var(--transition), box-shadow var(--transition);
+}
+
+.arch-flow__box:hover {
+  border-color: var(--border-strong);
+  box-shadow: 0 0 24px rgba(0, 212, 255, 0.12);
+}
+
+.arch-flow__index {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--cyan);
+  opacity: 0.8;
+}
+
+.arch-flow__label {
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--text-primary);
+}
+
+.arch-flow__arrow {
+  display: grid;
+  place-items: center;
+  padding: 0.35rem 0;
+  color: var(--cyan);
+  opacity: 0.7;
+}
+
+.arch-cards {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+.arch-card {
+  padding: 1.35rem 1.25rem;
+}
+
+.arch-card h3 {
+  font-size: 1.05rem;
+  margin-bottom: 0.5rem;
+  color: var(--text-primary);
+}
+
+.arch-card p {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+@media (min-width: 700px) {
+  .arch-cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .arch-flow {
+    padding: 2rem 1.5rem;
+  }
+
+  .arch-flow__list {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.35rem 0;
+    align-items: stretch;
+  }
+
+  .arch-flow__node {
+    flex-direction: row;
+    width: auto;
+    max-width: none;
+    align-items: center;
+  }
+
+  .arch-flow__box {
+    width: auto;
+    min-width: 140px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.35rem;
+    padding: 0.85rem 1rem;
+  }
+
+  .arch-flow__arrow {
+    padding: 0 0.35rem;
+    transform: rotate(-90deg);
+  }
+
+  .arch-cards {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}

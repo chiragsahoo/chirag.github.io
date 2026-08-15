@@ -1,0 +1,204 @@
+.hero {
+  position: relative;
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  align-items: center;
+  padding-top: calc(var(--nav-height) + 2rem);
+  padding-bottom: 4rem;
+  overflow: hidden;
+}
+
+.hero__inner {
+  position: relative;
+  z-index: 1;
+  padding-block: 2rem 3rem;
+}
+
+.hero__eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  margin-bottom: 1.5rem;
+  padding: 0.4rem 0.9rem 0.4rem 0.55rem;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: rgba(0, 212, 255, 0.05);
+}
+
+.hero__status {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--success);
+  box-shadow: 0 0 10px rgba(34, 211, 166, 0.7);
+  animation: status-pulse 2s ease-in-out infinite;
+}
+
+.hero__name {
+  font-size: clamp(2.6rem, 9vw, 5.5rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 0.95;
+  color: var(--text-primary);
+  text-shadow: 0 0 60px rgba(0, 212, 255, 0.15);
+  max-width: 14ch;
+}
+
+.hero__title {
+  margin-top: 1rem;
+  font-size: clamp(1.35rem, 3.5vw, 2rem);
+  font-weight: 700;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--cyan);
+  text-shadow: 0 0 40px rgba(0, 212, 255, 0.35);
+}
+
+.hero__tagline {
+  margin-top: 1.35rem;
+  max-width: 34ch;
+  font-size: clamp(1.05rem, 2.2vw, 1.35rem);
+  font-weight: 500;
+  color: var(--text-primary);
+  line-height: 1.4;
+}
+
+.hero__secondary {
+  margin-top: 0.85rem;
+  font-size: clamp(0.8rem, 1.6vw, 0.95rem);
+  color: var(--text-muted);
+  letter-spacing: 0.02em;
+  max-width: 48ch;
+}
+
+.hero__badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+  margin-top: 1.75rem;
+  max-width: 640px;
+}
+
+.hero__badge {
+  padding: 0.4rem 0.85rem;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: rgba(8, 16, 36, 0.6);
+  transition: border-color var(--transition), color var(--transition),
+    box-shadow var(--transition), transform var(--transition);
+}
+
+.hero__badge:hover {
+  color: var(--cyan);
+  border-color: var(--border-strong);
+  box-shadow: 0 0 20px rgba(0, 212, 255, 0.15);
+  transform: translateY(-2px);
+}
+
+.hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 2.25rem;
+}
+
+.btn--disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.hero__scroll {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  margin-top: 3rem;
+  font-size: 0.75rem;
+  font-family: var(--font-mono);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  transition: color var(--transition);
+  animation: scroll-bounce 2.4s ease-in-out infinite;
+}
+
+.hero__scroll:hover {
+  color: var(--cyan);
+}
+
+/* Entrance animations */
+.hero-anim {
+  opacity: 0;
+  transform: translateY(22px);
+  animation: hero-enter 0.85s var(--ease-out) forwards;
+}
+
+.hero-anim--1 { animation-delay: 0.1s; }
+.hero-anim--2 { animation-delay: 0.25s; }
+.hero-anim--3 { animation-delay: 0.55s; }
+.hero-anim--4 { animation-delay: 0.85s; }
+.hero-anim--5 { animation-delay: 1.05s; }
+.hero-anim--6 { animation-delay: 1.2s; }
+.hero-anim--7 { animation-delay: 1.35s; }
+
+@keyframes hero-enter {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes status-pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.55; transform: scale(0.85); }
+}
+
+@keyframes scroll-bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(6px); }
+}
+
+@media (max-width: 640px) {
+  .hero {
+    align-items: flex-start;
+    padding-top: calc(var(--nav-height) + 1.25rem);
+  }
+
+  .hero__title {
+    letter-spacing: 0.18em;
+  }
+
+  .hero__actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .hero__actions .btn {
+    width: 100%;
+  }
+
+  .hero__scroll {
+    margin-top: 2.5rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-anim {
+    opacity: 1;
+    transform: none;
+    animation: none;
+  }
+
+  .hero__status,
+  .hero__scroll {
+    animation: none;
+  }
+}
