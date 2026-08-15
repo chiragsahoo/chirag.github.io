@@ -1,6 +1,5 @@
 import { ArrowDown, Download, ExternalLink, FolderKanban, User } from 'lucide-react';
-import { heroBadges, profile } from '../data/profile';
-import { TechBackground } from '../components/TechBackground';
+import { heroBadges, heroSupportLine, profile } from '../data/profile';
 import './Hero.css';
 
 export function Hero() {
@@ -8,26 +7,29 @@ export function Hero() {
 
   return (
     <section id="top" className="hero" aria-labelledby="hero-name">
-      <TechBackground />
       <div className="hero__inner container">
-        <p className="hero__eyebrow hero-anim hero-anim--1">
+        <p className="hero__eyebrow hero-seq hero-seq--1">
           <span className="hero__status" aria-hidden="true" />
           Available for Tech Lead &amp; Senior Backend roles
         </p>
 
-        <h1 id="hero-name" className="hero__name hero-anim hero-anim--2">
+        <h1 id="hero-name" className="hero__name hero-seq hero-seq--2">
           {profile.nameDisplay}
         </h1>
 
-        <p className="hero__title hero-anim hero-anim--3">{profile.title}</p>
+        <div className="hero__title-wrap hero-seq hero-seq--3">
+          <p className="hero__title">{profile.title}</p>
+          <span className="hero__title-underline" aria-hidden="true" />
+        </div>
 
-        <p className="hero__tagline hero-anim hero-anim--4">{profile.tagline}</p>
+        <p className="hero__tagline hero-seq hero-seq--4">{profile.tagline}</p>
 
-        <p className="hero__secondary hero-anim hero-anim--5">
-          {profile.secondaryLine}
-        </p>
+        <p className="hero__secondary hero-seq hero-seq--5">{heroSupportLine}</p>
 
-        <div className="hero__badges hero-anim hero-anim--6" aria-label="Core technologies">
+        <div
+          className="hero__badges hero-seq hero-seq--6"
+          aria-label="Core technologies"
+        >
           {heroBadges.map((badge) => (
             <span key={badge} className="hero__badge">
               {badge}
@@ -35,7 +37,7 @@ export function Hero() {
           ))}
         </div>
 
-        <div className="hero__actions hero-anim hero-anim--7">
+        <div className="hero__actions hero-seq hero-seq--7">
           <a href="#about" className="btn btn-primary">
             <User className="btn-icon" aria-hidden="true" />
             Explore My Profile
@@ -59,17 +61,20 @@ export function Hero() {
               LinkedIn
             </a>
           ) : (
-            <span className="btn btn-ghost btn--disabled" title="Add LinkedIn URL in src/data/profile.ts">
+            <span
+              className="btn btn-ghost btn--disabled"
+              title="Add LinkedIn URL in src/data/profile.ts"
+            >
               LinkedIn
             </span>
           )}
         </div>
-
-        <a href="#snapshot" className="hero__scroll" aria-label="Scroll to snapshot">
-          <ArrowDown size={18} />
-          <span>Scroll</span>
-        </a>
       </div>
+
+      <a href="#snapshot" className="hero__scroll" aria-label="Scroll to snapshot">
+        <ArrowDown size={18} />
+        <span>Scroll</span>
+      </a>
     </section>
   );
 }

@@ -1,4 +1,5 @@
-import { Linkedin, Github } from 'lucide-react';
+import { Linkedin } from 'lucide-react';
+// import { Github } from 'lucide-react'; // Hidden for now
 import { profile } from '../data/profile';
 import './Footer.css';
 
@@ -26,11 +27,8 @@ export function Footer() {
               >
                 <Linkedin size={18} />
               </a>
-            ) : (
-              <span className="footer__social-disabled" title="Add LinkedIn in profile.ts" aria-hidden="true">
-                <Linkedin size={18} />
-              </span>
-            )}
+            ) : null}
+            {/* GitHub hidden for now
             {profile.contact.github ? (
               <a
                 href={profile.contact.github}
@@ -45,12 +43,15 @@ export function Footer() {
                 <Github size={18} />
               </span>
             )}
+            */}
           </div>
         </div>
       </div>
       <div className="footer__bottom">
         <div className="container">
-          <p>© {year} {profile.name}. All rights reserved.</p>
+          <p>
+            © {year} {profile.name}. All rights reserved.
+          </p>
         </div>
       </div>
     </footer>

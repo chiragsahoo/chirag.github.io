@@ -1,6 +1,6 @@
 .leadership {
   background:
-    radial-gradient(ellipse 50% 40% at 10% 50%, rgba(30, 111, 255, 0.08), transparent),
+    radial-gradient(ellipse 50% 40% at 10% 50%, rgba(0, 168, 255, 0.08), transparent),
     transparent;
 }
 
@@ -19,6 +19,10 @@
   height: 100%;
 }
 
+.leadership__card:hover {
+  transform: translateY(-4px);
+}
+
 .leadership__icon {
   width: 2.5rem;
   height: 2.5rem;
@@ -27,8 +31,14 @@
   border-radius: 10px;
   margin-bottom: 1rem;
   color: var(--cyan);
-  background: rgba(0, 212, 255, 0.08);
-  border: 1px solid rgba(0, 212, 255, 0.2);
+  background: rgba(0, 229, 255, 0.08);
+  border: 1px solid rgba(0, 229, 255, 0.2);
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+
+.leadership__card:hover .leadership__icon {
+  transform: rotate(-6deg) scale(1.06);
+  box-shadow: 0 0 20px rgba(0, 229, 255, 0.25);
 }
 
 .leadership__card h3 {
@@ -40,6 +50,13 @@
   font-size: 0.9rem;
   color: var(--text-secondary);
   line-height: 1.6;
+  max-height: 4.8em;
+  overflow: hidden;
+  transition: max-height 0.45s var(--ease-out), color var(--transition);
+}
+
+.leadership__card:hover p {
+  color: #c5d4e8;
 }
 
 @media (min-width: 640px) {

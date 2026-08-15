@@ -1,14 +1,19 @@
 import { useEffect, useState } from 'react';
-import { Menu, X, Linkedin, Github } from 'lucide-react';
+import { Menu, X, Linkedin } from 'lucide-react';
+// import { Github } from 'lucide-react'; // Hidden for now
 import { navLinks, profile } from '../data/profile';
+import { useActiveSection } from '../hooks/useActiveSection';
 import './Navbar.css';
+
+const SECTION_IDS = navLinks.map((l) => l.id);
 
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const active = useActiveSection(SECTION_IDS);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 24);
+    const onScroll = () => setScrolled(window.scrollY > 18);
     onScroll();
     window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);
@@ -38,7 +43,11 @@ export function Navbar() {
 
         <nav className="navbar__desktop" aria-label="Primary">
           {navLinks.map((link) => (
-            <a key={link.href} href={link.href} className="navbar__link">
+            <a
+              key={link.href}
+              href={link.href}
+              className={`navbar__link ${active === link.id ? 'navbar__link--active' : ''}`}
+            >
               {link.label}
             </a>
           ))}
@@ -56,6 +65,7 @@ export function Navbar() {
               <Linkedin size={18} />
             </a>
           )}
+          {/* GitHub hidden for now
           {profile.contact.github && (
             <a
               href={profile.contact.github}
@@ -67,7 +77,12 @@ export function Navbar() {
               <Github size={18} />
             </a>
           )}
-          <a href={profile.resumePath} className="btn btn-secondary navbar__cta" download>
+          */}
+          <a
+            href={profile.resumePath}
+            className="btn btn-secondary navbar__cta"
+            download
+          >
             Resume
           </a>
           <button
@@ -90,11 +105,21 @@ export function Navbar() {
       >
         <nav aria-label="Mobile">
           {navLinks.map((link) => (
-            <a key={link.href} href={link.href} onClick={close}>
+            <a
+              key={link.href}
+              href={link.href}
+              className={active === link.id ? 'is-active' : ''}
+              onClick={close}
+            >
               {link.label}
             </a>
           ))}
-          <a href={profile.resumePath} className="btn btn-primary" download onClick={close}>
+          <a
+            href={profile.resumePath}
+            className="btn btn-primary"
+            download
+            onClick={close}
+          >
             Download Resume
           </a>
         </nav>

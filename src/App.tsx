@@ -1,4 +1,6 @@
 import { Navbar } from './components/Navbar';
+import { AnimatedBackground } from './components/fx/AnimatedBackground';
+import { ScrollProgress } from './components/fx/ScrollProgress';
 import { Hero } from './sections/Hero';
 import { Snapshot } from './sections/Snapshot';
 import { About } from './sections/About';
@@ -18,21 +20,25 @@ function App() {
       <a href="#about" className="skip-link">
         Skip to content
       </a>
-      <Navbar />
-      <main>
-        <Hero />
-        <Snapshot />
-        <About />
-        <TechStack />
-        <Architecture />
-        <Career />
-        <Projects />
-        <Leadership />
-        <FinTech />
-        <ResumeCTA />
-        <Contact />
-      </main>
-      <Footer />
+      <ScrollProgress />
+      <AnimatedBackground variant="global" />
+      <div className="app-shell">
+        <Navbar />
+        <main>
+          <Hero />
+          <Snapshot />
+          <About />
+          <TechStack />
+          <Architecture />
+          <Career />
+          <Projects />
+          <Leadership />
+          <FinTech />
+          <ResumeCTA />
+          <Contact />
+        </main>
+        <Footer />
+      </div>
     </>
   );
 }

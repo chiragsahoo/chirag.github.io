@@ -12,39 +12,24 @@
 
 .fintech__chart {
   position: absolute;
-  inset: 10% 5% 15%;
+  inset: 12% 6% 18%;
   opacity: 0.12;
   background-image:
-    linear-gradient(90deg, transparent 0%, rgba(0, 212, 255, 0.4) 50%, transparent 100%),
     repeating-linear-gradient(
       90deg,
       transparent,
       transparent 48px,
-      rgba(0, 212, 255, 0.15) 48px,
-      rgba(0, 212, 255, 0.15) 49px
+      rgba(0, 229, 255, 0.12) 48px,
+      rgba(0, 229, 255, 0.12) 49px
     ),
     repeating-linear-gradient(
       0deg,
       transparent,
       transparent 36px,
-      rgba(30, 111, 255, 0.12) 36px,
-      rgba(30, 111, 255, 0.12) 37px
+      rgba(0, 168, 255, 0.1) 36px,
+      rgba(0, 168, 255, 0.1) 37px
     );
-  mask-image: linear-gradient(180deg, transparent, black 20%, black 80%, transparent);
-}
-
-.fintech__lines {
-  position: absolute;
-  bottom: 8%;
-  left: 5%;
-  right: 5%;
-  height: 80px;
-  opacity: 0.2;
-  background:
-    radial-gradient(ellipse 40% 100% at 20% 100%, rgba(0, 212, 255, 0.5), transparent),
-    radial-gradient(ellipse 35% 100% at 55% 80%, rgba(30, 111, 255, 0.45), transparent),
-    radial-gradient(ellipse 30% 100% at 85% 90%, rgba(0, 212, 255, 0.35), transparent);
-  filter: blur(2px);
+  mask-image: linear-gradient(180deg, transparent, black 25%, black 75%, transparent);
 }
 
 .fintech__inner {
@@ -54,34 +39,25 @@
 
 .fintech__grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 0.75rem;
+  grid-template-columns: 1fr;
+  gap: 0.65rem;
 }
 
 .fintech__item {
-  position: relative;
-  overflow: hidden;
-  padding: 1.1rem 1rem;
+  padding: 1rem 0.9rem;
   font-weight: 600;
-  font-size: 0.9rem;
+  font-size: 0.88rem;
   text-align: center;
   color: var(--text-primary);
 }
 
-.fintech__item-glow {
-  position: absolute;
-  inset: auto -20% -60%;
-  height: 80%;
-  background: radial-gradient(circle, rgba(0, 212, 255, 0.2), transparent 70%);
-  opacity: 0;
-  transition: opacity var(--transition);
+@media (min-width: 480px) {
+  .fintech__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
-.fintech__item:hover .fintech__item-glow {
-  opacity: 1;
-}
-
-@media (min-width: 700px) {
+@media (min-width: 768px) {
   .fintech__grid {
     grid-template-columns: repeat(3, 1fr);
   }
@@ -90,9 +66,5 @@
 @media (min-width: 1024px) {
   .fintech__grid {
     grid-template-columns: repeat(4, 1fr);
-  }
-
-  .fintech__item:last-child:nth-child(4n + 1) {
-    grid-column: span 1;
   }
 }

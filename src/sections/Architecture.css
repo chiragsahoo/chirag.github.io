@@ -1,43 +1,53 @@
 .architecture {
-  background: linear-gradient(180deg, transparent, rgba(8, 20, 48, 0.5), transparent);
+  background: linear-gradient(180deg, transparent, rgba(8, 20, 48, 0.45), transparent);
 }
 
 .arch-flow {
-  padding: 1.5rem 1rem;
+  padding: 1.5rem 1.15rem;
   margin-bottom: 2.5rem;
-  overflow-x: auto;
+  display: grid;
+  gap: 1.25rem;
 }
 
-.arch-flow__list {
+.arch-flow__track {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: stretch;
   gap: 0;
 }
 
-.arch-flow__node {
+.arch-flow__item {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 100%;
-  max-width: 420px;
 }
 
 .arch-flow__box {
   width: 100%;
+  max-width: 420px;
   display: flex;
   align-items: center;
   gap: 1rem;
-  padding: 0.9rem 1.15rem;
+  padding: 0.95rem 1.15rem;
   border-radius: var(--radius-md);
   border: 1px solid var(--border);
-  background: linear-gradient(135deg, rgba(0, 212, 255, 0.06), rgba(30, 111, 255, 0.04));
-  transition: border-color var(--transition), box-shadow var(--transition);
+  background: linear-gradient(
+    135deg,
+    rgba(0, 229, 255, 0.06),
+    rgba(0, 168, 255, 0.04)
+  );
+  text-align: left;
+  position: relative;
+  overflow: hidden;
+  transition: border-color var(--transition), box-shadow var(--transition),
+    transform var(--transition);
 }
 
-.arch-flow__box:hover {
+.arch-flow__box:hover,
+.arch-flow__box--active {
   border-color: var(--border-strong);
-  box-shadow: 0 0 24px rgba(0, 212, 255, 0.12);
+  box-shadow: 0 0 28px rgba(0, 229, 255, 0.16);
+  transform: translateY(-1px);
 }
 
 .arch-flow__index {
@@ -53,12 +63,61 @@
   color: var(--text-primary);
 }
 
-.arch-flow__arrow {
-  display: grid;
-  place-items: center;
-  padding: 0.35rem 0;
+.arch-flow__packet {
+  position: absolute;
+  left: -10%;
+  bottom: 0;
+  width: 28%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--cyan), transparent);
+  opacity: 0;
+}
+
+.arch-flow__box--active .arch-flow__packet {
+  display: none;
+}
+
+.arch-flow__dot {
+  animation: none;
+}
+
+.arch-flow__connector {
+  width: 1px;
+  height: 22px;
+  background: linear-gradient(180deg, var(--border-strong), transparent);
+  position: relative;
+}
+
+.arch-flow__dot {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--cyan);
+  transform: translate(-50%, -50%);
+  box-shadow: 0 0 10px var(--cyan-glow);
+  animation: packet-pulse 1.6s ease-in-out infinite;
+}
+
+.arch-flow__detail {
+  padding: 1.1rem 1.15rem;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border);
+  background: rgba(0, 229, 255, 0.04);
+}
+
+.arch-flow__detail h3 {
+  font-size: 1rem;
   color: var(--cyan);
-  opacity: 0.7;
+  margin-bottom: 0.4rem;
+}
+
+.arch-flow__detail p {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
 }
 
 .arch-cards {
@@ -74,7 +133,6 @@
 .arch-card h3 {
   font-size: 1.05rem;
   margin-bottom: 0.5rem;
-  color: var(--text-primary);
 }
 
 .arch-card p {
@@ -83,47 +141,73 @@
   line-height: 1.6;
 }
 
+@keyframes packet-run {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(350%);
+  }
+}
+
+@keyframes packet-pulse {
+  0%,
+  100% {
+    opacity: 0.4;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
 @media (min-width: 700px) {
   .arch-cards {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 1100px) {
   .arch-flow {
-    padding: 2rem 1.5rem;
+    padding: 1.75rem 1.5rem;
   }
 
-  .arch-flow__list {
+  .arch-flow__track {
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 0.35rem 0;
-    align-items: stretch;
+    align-items: center;
+    gap: 0.2rem;
   }
 
-  .arch-flow__node {
+  .arch-flow__item {
     flex-direction: row;
     width: auto;
-    max-width: none;
-    align-items: center;
   }
 
   .arch-flow__box {
     width: auto;
-    min-width: 140px;
+    min-width: 132px;
+    max-width: none;
     flex-direction: column;
     align-items: flex-start;
     gap: 0.35rem;
-    padding: 0.85rem 1rem;
+    padding: 0.85rem 0.95rem;
   }
 
-  .arch-flow__arrow {
-    padding: 0 0.35rem;
-    transform: rotate(-90deg);
+  .arch-flow__connector {
+    width: 22px;
+    height: 1px;
+    background: linear-gradient(90deg, var(--border-strong), transparent);
   }
 
   .arch-cards {
     grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .arch-flow__packet,
+  .arch-flow__dot {
+    animation: none !important;
   }
 }

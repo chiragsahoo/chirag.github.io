@@ -1,0 +1,62 @@
+.fx-bg {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.fx-bg--global {
+  position: fixed;
+  z-index: 0;
+}
+
+.fx-bg--hero,
+.fx-bg--section {
+  position: absolute;
+}
+
+.fx-bg__gradient {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 70% 45% at 50% -5%, rgba(0, 168, 255, 0.14), transparent 55%),
+    radial-gradient(ellipse 45% 35% at 90% 70%, rgba(0, 229, 255, 0.06), transparent 50%),
+    linear-gradient(180deg, #020617 0%, #030712 50%, #020617 100%);
+}
+
+.fx-bg--section .fx-bg__gradient {
+  background: radial-gradient(
+    ellipse 55% 45% at 15% 40%,
+    rgba(0, 168, 255, 0.06),
+    transparent 60%
+  );
+}
+
+.fx-bg__grid {
+  position: absolute;
+  inset: 0;
+  opacity: 0.35;
+  background-image:
+    linear-gradient(rgba(0, 229, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 229, 255, 0.04) 1px, transparent 1px);
+  background-size: 64px 64px;
+  mask-image: radial-gradient(ellipse 70% 60% at 50% 30%, black, transparent 75%);
+}
+
+.fx-bg__vignette {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    ellipse at center,
+    transparent 45%,
+    rgba(2, 6, 23, 0.5) 100%
+  );
+}
+
+@media (max-width: 768px) {
+  .fx-bg__grid {
+    opacity: 0.2;
+    background-size: 48px 48px;
+  }
+}

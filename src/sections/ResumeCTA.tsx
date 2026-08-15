@@ -9,15 +9,16 @@ export function ResumeCTA() {
   return (
     <section id="resume" className="section resume-cta" aria-labelledby="resume-title">
       <div className="container">
-        <Reveal>
+        <Reveal variant="scale">
           <div className="resume-cta__card glass-card">
             <div className="resume-cta__content">
-              <p className="section-eyebrow">Resume</p>
+              <p className="section-eyebrow">Next Step</p>
               <h2 id="resume-title" className="section-title">
-                Want to know more about my experience?
+                Let&apos;s build something impactful.
               </h2>
               <p className="section-subtitle">
-                Download the resume or connect on LinkedIn for a deeper look at roles, stack, and delivery focus.
+                Open to opportunities where technology, architecture and leadership
+                come together.
               </p>
               <div className="resume-cta__actions">
                 <a href={profile.resumePath} className="btn btn-primary" download>
@@ -32,19 +33,19 @@ export function ResumeCTA() {
                     rel="noopener noreferrer"
                   >
                     <ExternalLink className="btn-icon" aria-hidden="true" />
-                    LinkedIn
+                    Connect on LinkedIn
                   </a>
                 ) : (
                   <span
                     className="btn btn-secondary btn--disabled"
                     title="Add LinkedIn URL in src/data/profile.ts"
                   >
-                    LinkedIn
+                    Connect on LinkedIn
                   </span>
                 )}
               </div>
               <p className="resume-cta__hint">
-                Place your PDF at <code>public/assets/Chirag-Sahoo-Resume.pdf</code>
+                PDF available for download
               </p>
             </div>
           </div>

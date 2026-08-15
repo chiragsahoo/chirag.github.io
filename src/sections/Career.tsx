@@ -1,4 +1,3 @@
-import { ArrowUpRight, Sparkles } from 'lucide-react';
 import { careerTimeline } from '../data/profile';
 import { Reveal } from '../components/Reveal';
 import './Career.css';
@@ -9,42 +8,37 @@ export function Career() {
       <div className="container">
         <Reveal>
           <header className="section-header">
-            <p className="section-eyebrow">Career Journey</p>
+            <p className="section-eyebrow">Experience</p>
             <h2 id="career-title" className="section-title">
               From engineer to Tech Lead
             </h2>
             <p className="section-subtitle">
-              A progressive path through banking, FinTech payments, and enterprise platforms—culminating in hands-on technical leadership.
+              A progressive path through banking, FinTech payments, and enterprise
+              platforms—culminating in hands-on technical leadership.
             </p>
           </header>
         </Reveal>
 
         <div className="timeline" role="list">
           {careerTimeline.map((entry, index) => (
-            <Reveal key={entry.id} delay={(Math.min(index + 1, 4) as 1 | 2 | 3 | 4)}>
-              <article
-                className={`timeline__item ${entry.highlight ? 'timeline__item--highlight' : ''} ${entry.promotion ? 'timeline__item--promotion' : ''}`}
-                role="listitem"
-              >
+            <Reveal
+              key={entry.id}
+              delay={(Math.min(index + 1, 4) as 1 | 2 | 3 | 4)}
+              variant={index % 2 === 0 ? 'left' : 'right'}
+            >
+              <article className="timeline__item" role="listitem">
                 <div className="timeline__rail" aria-hidden="true">
                   <span className="timeline__dot" />
-                  {index < careerTimeline.length - 1 && <span className="timeline__line" />}
+                  {index < careerTimeline.length - 1 && (
+                    <span className="timeline__line" />
+                  )}
                 </div>
 
-                <div className={`timeline__card glass-card ${entry.promotion ? 'timeline__card--promo' : ''}`}>
-                  {entry.promotion && (
-                    <div className="timeline__promo-badge">
-                      <Sparkles size={14} aria-hidden="true" />
-                      Promoted to Tech Lead
-                    </div>
-                  )}
-
+                <div className="timeline__card glass-card">
                   <div className="timeline__header">
                     <div>
                       <h3 className="timeline__company">{entry.company}</h3>
-                      <p className={`timeline__role ${entry.highlight ? 'timeline__role--lead' : ''}`}>
-                        {entry.role}
-                      </p>
+                      <p className="timeline__role">{entry.role}</p>
                     </div>
                     <div className="timeline__meta">
                       <span className="timeline__period">{entry.period}</span>
@@ -88,13 +82,6 @@ export function Career() {
                       </div>
                     )}
                   </div>
-
-                  {entry.promotion && (
-                    <p className="timeline__promo-note">
-                      <ArrowUpRight size={16} aria-hidden="true" />
-                      Elevated from Software Engineer to Tech Lead at Oasys Tech Solutions, combining architecture ownership with hands-on delivery.
-                    </p>
-                  )}
                 </div>
               </article>
             </Reveal>

@@ -1,9 +1,27 @@
 import { useState } from 'react';
-import { techStack } from '../data/profile';
+import { orbitTechnologies, techStack } from '../data/profile';
 import { Reveal } from '../components/Reveal';
 import './TechStack.css';
 
-const PROMINENT = new Set(['.NET Core', 'ASP.NET Core', 'Spring Boot', 'Rust', 'C#']);
+const PROMINENT = new Set([
+  '.NET Core',
+  'ASP.NET Core',
+  'Spring Boot',
+  'Rust',
+  'C#',
+  'AI',
+  'LLM',
+  'OpenAI',
+  'Neuralink',
+  'Mastercard Simulator',
+  'Visa Simulator',
+  'PayShield',
+  'Tokenization',
+  'Advanced Encryption',
+  'Hashing',
+  'Advanced Security',
+  'DE Elements',
+]);
 
 export function TechStack() {
   const [active, setActive] = useState(techStack[0].id);
@@ -12,19 +30,37 @@ export function TechStack() {
   return (
     <section id="tech" className="section tech" aria-labelledby="tech-title">
       <div className="container">
-        <Reveal>
+        <Reveal variant="blur">
           <header className="section-header">
-            <p className="section-eyebrow">Technology Ecosystem</p>
+            <p className="section-eyebrow">Skills · Technology Ecosystem</p>
             <h2 id="tech-title" className="section-title">
               Multi-technology backend capability
             </h2>
             <p className="section-subtitle">
-              Strong emphasis on .NET, Spring Boot, and Rust—backed by cloud, messaging, and data platforms.
+              Strong emphasis on .NET, cloud, messaging, data platforms, and AI /
+              LLM technologies including OpenAI.
             </p>
           </header>
         </Reveal>
 
-        <Reveal delay={1}>
+        <Reveal delay={1} variant="scale">
+          <div className="tech-core glass-card" aria-label="Technology core">
+            <div className="tech-core__center">
+              <p className="tech-core__name">CHIRAG SAHOO</p>
+              <p className="tech-core__role">TECH LEAD</p>
+            </div>
+            <ul className="tech-core__ring">
+              {orbitTechnologies.map((item) => (
+                <li key={item}>{item}</li>
+              ))}
+              <li>ASP.NET Core</li>
+              <li>Neuralink</li>
+              <li>PostgreSQL</li>
+            </ul>
+          </div>
+        </Reveal>
+
+        <Reveal delay={2}>
           <div className="tech__tabs" role="tablist" aria-label="Technology categories">
             {techStack.map((cat) => (
               <button
@@ -41,7 +77,7 @@ export function TechStack() {
           </div>
         </Reveal>
 
-        <Reveal delay={2}>
+        <Reveal delay={3} variant="up">
           <div
             className="tech__panel glass-card"
             role="tabpanel"
@@ -62,7 +98,7 @@ export function TechStack() {
           </div>
         </Reveal>
 
-        <Reveal delay={3}>
+        <Reveal delay={4}>
           <div className="tech__all" aria-label="All technologies overview">
             {techStack.map((cat) => (
               <div key={cat.id} className="tech__group">

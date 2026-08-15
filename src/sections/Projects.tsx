@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { ArrowUpRight } from 'lucide-react';
 import { projectCategories } from '../data/profile';
 import { Reveal } from '../components/Reveal';
 import './Projects.css';
@@ -11,14 +12,16 @@ export function Projects() {
   return (
     <section id="projects" className="section projects" aria-labelledby="projects-title">
       <div className="container">
-        <Reveal>
+        <Reveal variant="blur">
           <header className="section-header">
             <p className="section-eyebrow">Projects</p>
             <h2 id="projects-title" className="section-title">
               Domains &amp; platforms delivered
             </h2>
             <p className="section-subtitle">
-              High-level project areas across FinTech payments and government/enterprise platforms—without confidential implementation details.
+              High-level project areas across FinTech payments and
+              government/enterprise platforms—without confidential implementation
+              details.
             </p>
           </header>
         </Reveal>
@@ -42,7 +45,11 @@ export function Projects() {
 
         <div className="projects__grid" role="tabpanel" aria-label={category.title}>
           {category.projects.map((project, i) => (
-            <Reveal key={project.name} delay={(Math.min((i % 4) + 1, 4) as 1 | 2 | 3 | 4)}>
+            <Reveal
+              key={project.name}
+              delay={(Math.min((i % 4) + 1, 4) as 1 | 2 | 3 | 4)}
+              variant="scale"
+            >
               <article className="project-card glass-card">
                 <div className="project-card__top">
                   <h3>{project.name}</h3>
@@ -56,6 +63,10 @@ export function Projects() {
                     </span>
                   ))}
                 </div>
+                <span className="project-card__explore" aria-hidden="true">
+                  Explore
+                  <ArrowUpRight size={14} />
+                </span>
               </article>
             </Reveal>
           ))}
